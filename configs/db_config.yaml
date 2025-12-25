@@ -1,8 +1,8 @@
 type: mongodb
-host: cluster0.mxmbesb.mongodb.net
+host: localhost
 port: 27017
-username: sami606713
-password: samiullah
-database: appStore
+username: ''
+password: ''
+database: your_mongo_db
 auth_database: admin
-storage: .backup
+storage: path
