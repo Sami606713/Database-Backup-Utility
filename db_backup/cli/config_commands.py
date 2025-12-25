@@ -6,6 +6,7 @@ from pathlib import Path
 from db_backup.connectors.sqlite_connector import SQLiteConnector
 from db_backup.connectors.postgres_connector import PostgresConnector
 from db_backup.connectors.mysql_connector import MySQLConnector
+from db_backup.connectors.mongodb_connector import MongoDBConnector
 import os
 
 app = typer.Typer()
@@ -21,7 +22,7 @@ def init():
     """
     console.print("[bold blue]Welcome to the Database Backup Utility Init[/bold blue]")
 
-    db_type = Prompt.ask("Choose database type", choices=["sqlite", "postgres", "mysql"], default="sqlite")
+    db_type = Prompt.ask("Choose database type", choices=["sqlite", "postgres", "mysql", "mongodb"], default="sqlite")
     
     if db_type == "sqlite":
         config = {
@@ -47,6 +48,17 @@ def init():
             "password": "your_mysql_password",
             "database": "your_mysql_db",
             "storage":"path"
+        }
+    elif db_type == "mongodb":
+        config = {
+            "type": "mongodb",
+            "host": "localhost",
+            "port": 27017,
+            "username": "",
+            "password": "",
+            "database": "your_mongo_db",
+            "auth_database": "admin",
+            "storage": "path"
         }
 
     if not CONFIG_DIR.exists():
@@ -92,6 +104,8 @@ def check():
         connector = PostgresConnector(config)
     elif db_type == "mysql":
         connector = MySQLConnector(config)
+    elif db_type == "mongodb":
+        connector = MongoDBConnector(config)
     else:
         console.print(f"[bold red]Unsupported database type: {db_type}[/bold red]")
         raise typer.Exit(code=1)

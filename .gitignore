@@ -1,0 +1,7 @@
+.env
+.db
+.venv
+__pycache__/
+.backup
+db.sqlite
+my_backup.db

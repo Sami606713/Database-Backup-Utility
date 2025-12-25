@@ -1,2 +1,8 @@
-type: sqlite
-database: db.sqlite
+type: mongodb
+host: cluster0.mxmbesb.mongodb.net
+port: 27017
+username: sami606713
+password: samiullah
+database: appStore
+auth_database: admin
+storage: .backup
