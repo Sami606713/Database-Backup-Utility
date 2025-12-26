@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database backups
+.backup/
+
+# Local databases
+db.sqlite
+
+# Environment / secrets
+configs/db_config.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+# Python virtual environments
+venv/
+.env/
+.venv/
+env/
+ENV/
